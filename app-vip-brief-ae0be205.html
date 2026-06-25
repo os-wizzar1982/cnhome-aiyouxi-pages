@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯专属信息入口 · 官方介绍站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f7f5f2;
+            line-height: 1.6;
+            color: #1e1c1a;
+            min-height: 100vh;
+        }
+
+        /* 深色头图 Hero */
+        .hero {
+            background: linear-gradient(150deg, #0c1a2b 0%, #1b2f44 60%, #2a4055 100%);
+            padding: 5rem 2rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f7f5f2;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #f2e9d0;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            max-width: 620px;
+            margin: 1.4rem auto 0;
+            color: #cbdae6;
+            font-size: 1.2rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        /* 信息卡片式网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: -1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            border: 1px solid #ece9e3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #0a1f30;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            color: #3d3b38;
+            font-size: 0.98rem;
+            margin-bottom: 0.8rem;
+            flex: 1;
+        }
+
+        .card .badge {
+            display: inline-block;
+            background: #eae4db;
+            color: #2a3f4f;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            margin-top: 0.6rem;
+            align-self: flex-start;
+        }
+
+        /* 主视觉（卡片区上方） */
+        .intro-block {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.5rem 2.5rem 2.2rem;
+            margin: -0.2rem 0 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e6e1d9;
+        }
+
+        .intro-block h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #0f1e2c;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.3px;
+        }
+
+        .intro-block p {
+            font-size: 1.05rem;
+            color: #3e3c39;
+            max-width: 780px;
+        }
+
+        .intro-block .highlight-link {
+            margin-top: 1.2rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #b4532b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: #8b3d1e;
+            border-bottom: 1px solid #b4532b;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.65rem 2rem;
+            border: 1px solid #b4532b;
+            border-radius: 60px;
+            color: #b4532b;
+            font-weight: 500;
+            background: transparent;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+            text-decoration: none;
+            border-bottom: 1px solid #b4532b;
+        }
+
+        .btn-outline:hover {
+            background: #b4532b10;
+            border-color: #8b3d1e;
+            color: #8b3d1e;
+        }
+
+        /* 自然链接段落 / 可信说明 */
+        .trust-section {
+            background: #f2efe9;
+            border-radius: 28px;
+            padding: 2.2rem 2.5rem;
+            margin: 2.5rem 0;
+            border-left: 6px solid #b4532b;
+        }
+
+        .trust-section h3 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #132433;
+            margin-bottom: 0.8rem;
+        }
+
+        .trust-section p {
+            color: #3b3834;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .trust-section p + p {
+            margin-top: 1rem;
+        }
+
+        .faq-mini {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dad5cb;
+        }
+
+        .faq-mini h4 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #1d2b38;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            margin: 1rem 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1f2c37;
+        }
+
+        .faq-item span {
+            color: #484540;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem 1.8rem;
+            font-size: 0.85rem;
+            color: #7d776e;
+            border-top: 1px solid #e1dad1;
+            margin-top: 2rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .intro-block h2 { font-size: 1.7rem; }
+            .card-grid { gap: 1.4rem; }
+            .card { padding: 1.6rem; }
+            .trust-section { padding: 1.8rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>⚽ 世界杯 · 全景指南</h1>
+        <p>聚焦赛事资讯、观赛路径与可信服务，一站了解官方动态与实用信息。</p>
+    </header>
+
+    <main class="container">
+
+        <!-- 站点介绍 & 可信说明 -->
+        <div class="intro-block">
+            <h2>关于这个信息站</h2>
+            <p>
+                这里聚合了与<a href="https://app-vip-fifa2026.com">世界杯</a>相关的核心资源、官方动态以及观赛辅助信息。我们力求提供透明、克制的介绍，不夸大、不误导，只呈现经过梳理的内容与可信参考。无论你是资深球迷还是初次关注，都能在这里找到清晰的方向。
+            </p>
+            <div class="highlight-link">
+                <a href="https://app-vip-fifa2026.com" class="btn-outline">世界杯</a>
+            </div>
+        </div>
+
+        <!-- 信息卡片式：用途卡片 + 适合人群 -->
+        <div class="card-grid">
+
+            <div class="card">
+                <h3>📋 赛事导览</h3>
+                <p>提供赛程概览、分组信息及关键节点提醒，帮助你提前规划观赛时间，不错过任何焦点战役。</p>
+                <span class="badge">信息聚合</span>
+            </div>
+
+            <div class="card">
+                <h3>🧭 官方参考</h3>
+                <p>汇集经核实的官方通知、票务提示及东道主城市资讯，方便你区分正式渠道与外部消息。</p>
+                <span class="badge">可信来源</span>
+            </div>
+
+            <div class="card">
+                <h3>🎯 适合人群</h3>
+                <p>面向球迷、媒体从业者、旅游规划者，以及任何希望对<a href="https://app-vip-fifa2026.com">世界杯</a>保持关注且需要可靠信息入口的人。</p>
+                <span class="badge">开放访问</span>
+            </div>
+
+            <div class="card">
+                <h3>🌍 场景延伸</h3>
+                <p>从赛前资讯到文化周边，从观赛活动到数字服务，将世界杯相关场景融入日常信息流。</p>
+                <span class="badge">多元覆盖</span>
+            </div>
+
+        </div>
+
+        <!-- 可信说明 + 自然链接段落 -->
+        <div class="trust-section">
+            <h3>⚡ 可信说明 · 我们这样介绍</h3>
+            <p>
+                本页面不隶属于国际足联或任何赛事官方组织。所有提及的<a href="https://app-vip-fifa2026.com">世界杯</a>信息均基于公开资料整理，并指向经过初步验证的站点。我们建议用户通过多个独立来源交叉核对关键信息，尤其是票务与旅行安排。
+            </p>
+            <p>
+                本站的初衷是降低信息查找门槛，同时保持内容克制——不渲染情绪、不制造焦虑。如果你对某一环节存疑，欢迎直接访问官方页面做进一步核实。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-mini">
+            <h4>❓ 常见疑问摘要</h4>
+            <div class="faq-item">
+                <strong>这个站点提供购票服务吗？</strong>
+                <span>不提供。我们仅展示信息入口，不处理任何票务或交易。</span>
+            </div>
+            <div class="faq-item">
+                <strong>信息的更新频率如何？</strong>
+                <span>页面内容依据公开动态不定期修订，重大节点会及时同步。</span>
+            </div>
+            <div class="faq-item">
+                <strong>如何联系或反馈？</strong>
+                <span>目前暂无公开反馈通道，建议直接参考站内链接获取官方联系方式。</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>信息卡片站 · 仅供介绍参考 · 非官方组织</p>
+        <p style="margin-top:0.4rem;">© 2025 · 内容基于公开资料整理</p>
+    </footer>
+
+</body>
+</html>
