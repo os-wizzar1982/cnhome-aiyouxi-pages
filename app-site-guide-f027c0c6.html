@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻动赛程的日常 · 世界杯笔记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #1f2a3a;
+            background-color: #f4f6fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- 深色头图 --- */
+        .hero {
+            background: #0c1a2b;
+            background-image: radial-gradient(circle at 20% 30%, #1a3048 0%, #07121f 100%);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            color: #dbe4ef;
+            border-bottom: 1px solid #2b4058;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            color: #eef4fc;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            max-width: 520px;
+            margin: 0 auto;
+            opacity: 0.8;
+            font-weight: 300;
+            border-left: 2px solid #5a7f9e;
+            padding-left: 1.2rem;
+            text-align: left;
+        }
+
+        /* --- 浅色正文区 --- */
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 3rem;
+            background: #ffffff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+            flex: 1;
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            color: #2c3a4a;
+            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e2e9f2;
+        }
+
+        .intro strong {
+            color: #1e3a5f;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #14273e;
+            margin: 2.2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "—";
+            color: #6a8bb0;
+            font-weight: 300;
+            margin-right: 6px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.8rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem 1.8rem;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0 0.5rem 1rem;
+            border-left: 3px solid #b3c9df;
+            font-size: 0.95rem;
+            color: #1f2e40;
+            transition: border-color 0.15s;
+        }
+
+        .feature-list li:hover {
+            border-left-color: #3d6b94;
+        }
+
+        .scene-block {
+            background: #f7faff;
+            padding: 1.6rem 1.8rem;
+            margin: 2rem 0 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #e3ecf5;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .scene-block p {
+            font-size: 0.98rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .scene-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tip {
+            background: #edf3fa;
+            border-left: 4px solid #3c6b97;
+            padding: 1rem 1.4rem;
+            margin: 2rem 0 1.5rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .faq-note {
+            border-top: 1px solid #dce6f0;
+            padding-top: 1.5rem;
+            margin-top: 2.2rem;
+        }
+
+        .faq-note details {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .faq-note summary {
+            cursor: pointer;
+            color: #1f3e5c;
+            font-weight: 500;
+            padding: 0.3rem 0;
+            transition: color 0.1s;
+        }
+
+        .faq-note summary:hover {
+            color: #1b5a7e;
+        }
+
+        .faq-note details p {
+            margin: 0.5rem 0 0 1.2rem;
+            color: #38546e;
+        }
+
+        .link-sentence {
+            font-size: 1rem;
+            margin: 1.8rem 0 0.5rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid #e2e9f2;
+        }
+
+        a {
+            color: #206090;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.1s;
+        }
+
+        a:hover {
+            color: #0f3d5e;
+            border-bottom-color: #0f3d5e;
+        }
+
+        .footer-note {
+            margin-top: 2.2rem;
+            font-size: 0.85rem;
+            color: #6a7c8f;
+            text-align: center;
+            border-top: 1px dashed #d0dceb;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 2.8rem 1rem 2.2rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .tagline {
+                font-size: 0.95rem;
+                padding-left: 1rem;
+            }
+            .container {
+                padding: 1.8rem 1rem 2.5rem;
+            }
+            .feature-list {
+                grid-template-columns: 1fr;
+                gap: 0.4rem;
+            }
+            .scene-block {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>赛程之外，还有叙说</h1>
+        <div class="tagline">从一次查询开始，逐渐走进更完整的<strong>世界杯</strong>记录</div>
+    </section>
+
+    <main class="container">
+
+        <div class="intro">
+            <p>有时只是想知道下一场淘汰赛在哪个城市，有时是翻看多年前的经典对阵，不知不觉就多停留了半小时。<strong>赛历、分组、场地、历史线索</strong>——这些内容原本散落在各处，现在慢慢被整理到同一个安静的地方。你可以把它当作一本不断补充的笔记，每次打开都可能发现之前没注意到的细节。</p>
+        </div>
+
+        <div class="section-title">翻阅中常见的内容</div>
+        <ul class="feature-list">
+            <li>完整赛程表（含北京时间、当地场馆）</li>
+            <li>小组赛积分 &amp; 晋级路线图</li>
+            <li>历届冠军与决赛比分速查</li>
+            <li>举办城市简介与球场容量</li>
+            <li>裁判组、视频助理裁判相关信息</li>
+            <li>赛事纪录：进球、出场、观众数</li>
+        </ul>
+
+        <div class="scene-block">
+            <p><strong>一个普通的使用场景：</strong>朋友发来消息问“那场四分之一决赛是几号来着”，你打开页面找到对应的阶段，顺手把小组第三轮的出线形势也看了一遍。过了几分钟，又点开上一届的淘汰赛列表，对照着今年可能出现的对阵变化。</p>
+            <p>这种从单一查询延伸到横向对比的阅读方式，是很多人使用它的常态。</p>
+        </div>
+
+        <div class="tip">
+            <strong>关于信息结构：</strong>页面没有采用大板块堆砌，而是按比赛日、阶段、主题逐步展开。你可以从任意一个段落切入，也可以直接翻到最后查看常见问题摘要。对于习惯先纵向浏览再深入点击的人来说，这种节奏相对友好。
+        </div>
+
+        <div class="section-title">延伸阅读与对照</div>
+        <p style="margin-bottom: 0.8rem;">如果你在找某个特定年份的预选赛结果，或者想确认某座球场历史上举办过哪些重要比赛，这些内容也正在被逐步补充。当前页面更侧重于本届赛程、场地以及简要的历史对照。对于希望深入了解竞赛规则沿革、参赛队更迭等话题的读者，后续可以留意专题更新。</p>
+
+        <div class="faq-note">
+            <details>
+                <summary>FAQ 摘要 · 常见疑问</summary>
+                <p><strong>页面数据更新频率如何？</strong><br>赛程、分组、比赛结果随赛程推进更新，通常在每轮结束后一个工作日内调整。历史数据部分按季度复核。</p>
+                <p><strong>是否包含所有场次的技术统计？</strong><br>目前以赛程、比分、基础数据为主，详细技术统计（射门、控球率等）正在陆续接入。</p>
+                <p><strong>移动端查看效果如何？</strong><br>页面按响应式设计，手机竖屏模式下表格自动折行，列表保持可读性。</p>
+            </details>
+            <details>
+                <summary>页面背后的整理思路</summary>
+                <p>信息来源于公开赛事文档、国际足联官方发布以及多家媒体记录。尽可能核对不同来源以降低误差，但仍建议以官方最终公告为准。页面不是为了替代任何官方渠道，而是提供另一种整理和翻阅的视角。</p>
+            </details>
+        </div>
+
+        <div class="link-sentence">
+            如果你也在寻找一个可以日常检索、对照和延伸阅读的地方，可以看看这个关于 <a href="https://app-site-fifa2026.com">世界杯</a> 的内容集合。它不一定是最快的，但可能是信息层次比较清晰的那一个。
+        </div>
+
+        <div class="footer-note">
+            —— 持续翻新 · 版本记录 ——
+        </div>
+
+    </main>
+
+</body>
+</html>
